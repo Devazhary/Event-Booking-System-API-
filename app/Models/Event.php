@@ -19,6 +19,10 @@ class Event extends Model
         'is_active'
     ];
 
+    protected $casts = [
+      'date' => 'datetime'
+    ];
+
     public function category()
     {
         return $this->belongsTo(Category::class);

@@ -11,7 +11,11 @@ class CategoryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        if($this->user()->role == 'admin')
+        {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -21,8 +25,9 @@ class CategoryRequest extends FormRequest
      */
     public function rules(): array
     {
+        $isCreate = $this->isMethod('POST');
         return [
-            'name' => 'required|string',
+            'name' => [$isCreate ? 'required' : 'nullable', 'string', 'max:255'],
         ];
     }
 }
