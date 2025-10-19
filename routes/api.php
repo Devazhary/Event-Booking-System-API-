@@ -30,15 +30,15 @@ Route::prefix('v1')->group(function () {
         Route::middleware('is_admin')->group(function () {
 
 
-            Route::apiResource('categories', CategoryController::class)->only(['store', 'update', 'destroy']);
+            Route::apiResource('categories', CategoryController::class)->only(['store', 'update']);
             Route::patch('categories/{category}/toggle', [CategoryController::class, 'toggle'])->name('v1.categories.toggle');
 
 
-            Route::apiResource('events', EventController::class)->only(['store', 'update', 'destroy']);
+            Route::apiResource('events', EventController::class)->only(['store', 'update']);
             Route::patch('events/{event}/toggle', [EventController::class, 'toggle'])->name('v1.events.toggle');
 
 
-            Route::apiResource('bookings', BookingController::class)->only(['store', 'update', 'destroy']);
+            Route::apiResource('bookings', BookingController::class)->only(['store', 'update']);
             Route::patch('bookings/{booking}/toggle', [BookingController::class, 'toggle'])->name('v1.bookings.toggle');
         });
     });
