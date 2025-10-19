@@ -41,14 +41,6 @@ class EventController extends Controller
         return new EventResource($event);
     }
 
-    public function destroy(Event $event)
-    {
-        $event->delete();
-        return response()->json([
-            'message' => 'Event Deleted Successfully'
-        ], 200);
-    }
-
     public function toggle(Event $event)
     {
         $event->is_active = !$event->is_active;

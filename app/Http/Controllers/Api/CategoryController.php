@@ -41,14 +41,6 @@ class CategoryController extends Controller
         return new CategoryResource($category);
     }
 
-    public function destroy(Category $category)
-    {
-        $category->delete();
-        return response()->json([
-            'message' => 'Category deleted successfully'
-        ], 200);
-    }
-
     public function toggle(Category $category)
     {
         $category->is_active = !$category->is_active;
